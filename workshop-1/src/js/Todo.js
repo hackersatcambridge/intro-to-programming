@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ToDo extends Component {
+class Todo extends Component {
   /*This is required in order to locally save the To-Dos we will be working with
     It's going to happen automatically, it's sort of an initialization (if you will)
     Don't worry too much about it, google `constructors` if you'd like to know more */
@@ -36,7 +36,7 @@ class ToDo extends Component {
   }
 
   // Takes an id of a todo and removes it from the local list of todos
-  removeToDo(id){
+  removeTodo(id){
     alert("Not implemented yet!");
     //TODO: remove the To-Do item with a matching id to the input one
     // You're working with the local To-Dos, these are held carefully
