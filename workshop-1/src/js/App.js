@@ -34,20 +34,20 @@ class App extends Component {
     
     return <div className="App">
       <div className="App_header">
-        <h2>Welcome to Hackers at Cambridge JavaScript Playground</h2>
+        <h1>Hackers at Cambridge JavaScript Playground</h1>
       </div>
       <div className="App_content">
         <div className="App_container">
           {this.renderComponent(this.state.renderedComponent)}
         </div>
         <div className="App_buttons">
-          <button className="app_button"
+          <button className="Button"
             onClick={()=>this.setRenderedComponent("ToDo")}>ToDo List</button>
-          <button className="app_button"
+          <button className="Button"
             onClick={()=>this.setRenderedComponent("Snek")}>Snek Game</button>
-          <button className="app_button"
+          <button className="Button"
             onClick={()=>this.setRenderedComponent("Transfer")}>Transfer Skills</button>
-          <button className="app_button"
+          <button className="Button"
             onClick={()=>this.setRenderedComponent("Playground")}>Back to Playground</button>
         </div>        
       </div>

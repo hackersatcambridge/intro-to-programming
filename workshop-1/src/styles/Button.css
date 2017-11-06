@@ -1,0 +1,14 @@
+.Button {
+  font-size: inherit;
+  padding: 0.5rem 1rem;
+  background: #2244b4;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.Button:hover {
+  background: #1d3997;
+}
