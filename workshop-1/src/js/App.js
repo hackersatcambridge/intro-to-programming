@@ -22,7 +22,7 @@ class App extends Component {
   //Render appropriate component accordingly 
   renderComponent(componentName){
     switch(componentName){
-        case "Todo": return <ToDo/>
+        case "Todo": return <Todo/>
         case "Snek": return <Snek/>
         case "Transfer": return <Transfer/>
         case "Playground": return <Playground/>
