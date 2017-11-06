@@ -15,7 +15,7 @@ class ToDo extends Component {
   // You will be implementing and tweaking with these functions
 
   showToDos(){
-    alert("Not implemented yet!")
+    alert("Not implemented yet!");
     //TODO: use your toDoList, imported from `./data.js
     // in conjuction with `showToDo(content)` 
 
@@ -24,7 +24,7 @@ class ToDo extends Component {
   }
 
   removeToDo(id){
-    alert("Not implemented yet!")
+    alert("Not implemented yet!");
     //TODO: remove the To-Do item with a matching id to the input one
     // You're working with the local To-Dos, these are held carefully
     // we're getting them with `getLocalTodos` helper function
@@ -38,7 +38,7 @@ class ToDo extends Component {
   }
 
   completedToDo(id){
-    alert("Not implemented yet!")
+    alert("Not implemented yet!");
     //TODO: mark ToDo item with a matching id to the input one as completed 
     //Hint: At this point your local ToDos should already be objects
     var toDos = this.getLocalTodos();
@@ -49,14 +49,14 @@ class ToDo extends Component {
   }
 
   addTodoItem(value){    
-    alert("Not implemented yet!")
+    alert("Not implemented yet!");
     //TODO: add a To-Do Item to our locally saved To-Dos
     //We already know `showToDo` takes whatever `content` you give it and showes it into local To-Dos
     //Why not make use of it?
   }
 
   renderDescription () {
-    return "To-Do List Maker"
+    return "To-Do List Maker";
   }   
   // =========================================================================
   

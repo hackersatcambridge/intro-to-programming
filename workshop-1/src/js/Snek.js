@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Snek extends Component {  
   /*Create your functions here*/
   renderDescription() {
-    return "A simple Snake Game"
+    return "A simple Snake Game";
   }
 
   render() {

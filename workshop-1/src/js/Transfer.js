@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Transfer extends Component { 
   /*Create your functions here*/
   renderDescription () {
-    return "Transfer Knowledge Playground"
+    return "Transfer Knowledge Playground";
   }
   render() {    
     /*Call them in the return */
