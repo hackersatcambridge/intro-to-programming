@@ -76,7 +76,7 @@ There are three workshops that you may attempt with the knowledge acquired from 
 ### Workshop 1 
 In this workshop we will go ahead and apply the acquired knowledge to a real-life application. 
 
-By putting together the pieces for a [To-Do Application](./workshop-1/description.md) we will dynamically see our code shaping the outcome of the program. Striving to understand how everything puzzles together is one of the beauties of programming. 
+By putting together the pieces for a [To-Do Application](./workshop-1/README.md) we will dynamically see our code shaping the outcome of the program. Striving to understand how everything puzzles together is one of the beauties of programming. 
 
 ### Workshop 2
 To be continued...
