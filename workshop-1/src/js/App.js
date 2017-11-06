@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/App.css'
 import Playground from './Playground.js'
-import ToDo from './ToDo.js'
+import Todo from './Todo.js'
 import Snek from './Snek.js'
 import Transfer from './Transfer.js'
 
@@ -22,7 +22,7 @@ class App extends Component {
   //Render appropriate component accordingly 
   renderComponent(componentName){
     switch(componentName){
-        case "ToDo": return <ToDo/>
+        case "Todo": return <ToDo/>
         case "Snek": return <Snek/>
         case "Transfer": return <Transfer/>
         case "Playground": return <Playground/>
@@ -42,7 +42,7 @@ class App extends Component {
         </div>
         <div className="App_buttons">
           <button className="Button"
-            onClick={()=>this.setRenderedComponent("ToDo")}>ToDo List</button>
+            onClick={()=>this.setRenderedComponent("Todo")}>ToDo List</button>
           <button className="Button"
             onClick={()=>this.setRenderedComponent("Snek")}>Snek Game</button>
           <button className="Button"
