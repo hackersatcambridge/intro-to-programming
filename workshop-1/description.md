@@ -126,8 +126,8 @@ Write the JavaScript code to:
         * Think about what you'd like this `id` to be :) 
         * What should be the default value for our `completed` field? (_When you initially add a To-Do Item, you're probably not adding it because you already completed it_) 
     * **Method:** (_You can approach this in more than one way_)
-        * Modify the pre-defined `toDoList` to correspond to the new format
-        * Modify your implementation of `showToDos()` to "wrap" the contents of `toDoList` as objects, and give these wrapped objects (with the correct format, obviously) as inputs to `showToDo(content)` -- Keep in mind content can be anything, it gets added to the local To-Dos anyway
+        Method 1: Modify the pre-defined `toDoList` to correspond to the new format
+        Method 2: Modify your implementation of `showToDos()` to "wrap" the contents of `toDoList` as objects, and give these wrapped objects (with the correct format, obviously) as inputs to `showToDo(content)` -- Keep in mind content can be anything, it gets added to the local To-Dos anyway
     * You may notice now that your `addTodoItem(value)` is no longer adequate. (_Why do you think this is? See Hint [1](#1)_)
         * Modify it to behave as you'd expect (_i.e to show a To-Do Item, as opposed to only text on screen_)
 
