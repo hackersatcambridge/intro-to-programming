@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+.App_header {
+  background-color: #63000c;
+  height: 3em;
+  padding: 2em;
+  color: white;
+}
+
+.App_intro {
+  font-size: large;
+}
+
+.App_content {
+  display: flex;
+  direction: column;
+  margin: 1em;
+}
+
+.App_container {
+  min-width: 85%;
+  min-height: 100%;
+  margin-right: 1em;
+  background-color: lightgray;
+}
+
+.App_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;  
+}

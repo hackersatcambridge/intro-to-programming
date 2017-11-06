@@ -1,0 +1,15 @@
+{
+  "short_name": "HaC JavaScript Demo",
+  "name": "JavaScript for Learning",
+  "start_url": "./index.html",
+  "icons": [
+    {
+      "src": "../resources/hac-logo-small-dark.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

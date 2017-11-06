@@ -1,0 +1,22 @@
+title: "Introduction to Programming: Session 1"
+date: 2017-10-18
+time: 19:00:00
+location: Compute Rooms, Judge Business Business School
+authors:
+  - Lucia Angela Bura
+presenters:
+  - Lucia Angela Bura
+thanks:
+  - to        : Judge Business School
+recommend:
+  - name      : Slides
+    url       : https://docs.google.com/presentation/d/10VeyoN7EzxfezPjInAda_uEBZ1yp1UkY7z8ST78Do8Q/edit
+  - name      : Interactive Q&A Session
+    url       : http://goog.gl/slides/7fv7uf
+links:
+  - https://www.youtube.com/watch?v=AqZWwsM3jaY
+tags:
+  - Beginner
+  - Javascript
+  - Web
+  - Programming
