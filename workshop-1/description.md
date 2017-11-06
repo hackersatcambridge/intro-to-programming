@@ -13,7 +13,7 @@ To-do List Maker
 
      
 ## Task 
-Go to `./ToDo.js` and have a look at the code. Try to figure out what it does so far and how it does it. 
+Go to `./workshop-1/src/js/ToDo.js` and have a look at the code. Try to figure out what it does so far and how it does it. 
 
 **Disclaimer**:
 A big part of any programming project you will ever come accross is understanding other people's code and either modifying or building on top of it. This should always play to your advantage and save you from unneccessary labour. It is rarely the case that you will need to write an entire application from scratch.  
@@ -40,7 +40,7 @@ Write the JavaScript code to:
     ```js
     showToDos(){
          // Your code goes here
-    }
+    }    
     ```
     * **Method:** Iterate through `toDoList` (_think looping through it_) and print its contents on the screen (for this, you can use the given `showToDo(content)` helper function, which abstracts away web-funkyness. This is how it looks, it's already in your project code: 
     ```js
@@ -49,6 +49,9 @@ Write the JavaScript code to:
         toDosNew.push(content);   
         this.setState({toDosLocal: toDosNew});
     }
+    
+    // ATENTION: You call showToDo with the `this` keyword, as such: 
+    this.showToDo("Texty text");
     ```
 
 **Checkpoint:** OK, now we have a way of showing on screen some 'programmer defined' set of tasks. Next, we'd actually like to interact a bit with the user. 
