@@ -14,15 +14,28 @@ class ToDo extends Component {
 
   // You will be implementing and tweaking with these functions
 
-  showToDos(){
+  // Loads the contents of an external, predefined todo list 
+  // Adds these existing todos to a local list of todos
+  loadTodos(){
     alert("Not implemented yet!");
-    //TODO: use your toDoList, imported from `./data.js
-    // in conjuction with `showToDo(content)` 
+    //TODO: use your todoList, imported from `./data.js
+    // in conjuction with `storeTodo(content)` 
 
     // Your code goes here
 
   }
 
+  // Takes a name (as a string) and adds it the local list of todos
+  addTodo(name){    
+    //TODO: create a new todo object and add it to the local list of todos
+
+
+    // `storeTodo` takes ANYTHING (some content) and adds it to the local list. 
+    // for the beginning, it's taking name as an input, you may want to change that. 
+    storeTodo(name);
+  }
+
+  // Takes an id of a todo and removes it from the local list of todos
   removeToDo(id){
     alert("Not implemented yet!");
     //TODO: remove the To-Do item with a matching id to the input one
@@ -36,23 +49,17 @@ class ToDo extends Component {
     // we can go ahead and update the local To-Dos  
     this.updateLocalTodos(toDos);
   }
-
-  completedToDo(id){
+ 
+  // Takes an id of a todo and markes it as completed in the local list of todos
+  markTodoCompleted(id){
     alert("Not implemented yet!");
     //TODO: mark ToDo item with a matching id to the input one as completed 
-    //Hint: At this point your local ToDos should already be objects
+    // Hint: At this point your local ToDos should already be objects
     var toDos = this.getLocalTodos();
     
     // Your code goes here
     
     this.updateLocalTodos(toDos);
-  }
-
-  addTodoItem(value){    
-    alert("Not implemented yet!");
-    //TODO: add a To-Do Item to our locally saved To-Dos
-    //We already know `showToDo` takes whatever `content` you give it and showes it into local To-Dos
-    //Why not make use of it?
   }
 
   renderDescription () {
@@ -61,22 +68,22 @@ class ToDo extends Component {
   // =========================================================================
   
   // Helper functions
-  showToDo(content){  
+  storeTodo(content){  
     var toDosNew = this.state.toDosLocal;
     toDosNew.push(content);   
     this.setState({toDosLocal: toDosNew});
   }
 
   // Adds a To-Do Item to the web-content to abstract away these complications 
-  showTodoItem(toDo){
-    return <div className="todo-item" onClick={()=>this.completedToDo(toDo.id)}>
-      <div>{toDo.value}</div>
+  showTodo(toDo){
+    return <div className="todo-item" onClick={()=>this.markTodoCompleted(toDo.id)}>
+      <div>{toDo.name}</div>
       <button onClick={()=>this.removeToDo(toDo.id)}/>
     </div>
   }
   // Takes as an input an array of To-Dos and overwrites the locally saved ones
-  updateToDos(toDoList){
-    this.setState({toDosLocal: toDoList});
+  updateToDos(todoList){
+    this.setState({toDosLocal: todoList});
   }
   // Returns an array containing locally saved To-Dos 
   getLocalTodos(){

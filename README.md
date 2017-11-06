@@ -57,7 +57,7 @@ Go to the Introduction to Programming [repository](https://github.com/hackersatc
 
 ### Run the app
 
-* Go to the ```workshop-1``` folder location _(where you've cloned/unzipped it)_ 
+* Go to the ```workshop-1``` folder location _(where you've unzipped/cloned it)_ 
 * `yarn` 
 
     _This installs all other required dependecies for you_
