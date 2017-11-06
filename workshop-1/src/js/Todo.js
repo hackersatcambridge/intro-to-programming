@@ -32,7 +32,7 @@ class ToDo extends Component {
 
     // `storeTodo` takes ANYTHING (some content) and adds it to the local list. 
     // for the beginning, it's taking name as an input, you may want to change that. 
-    storeTodo(name);
+    this.storeTodo(name);
   }
 
   // Takes an id of a todo and removes it from the local list of todos
@@ -111,4 +111,4 @@ class ToDo extends Component {
   }
 }
 
-export default ToDo;
+export default Todo;
