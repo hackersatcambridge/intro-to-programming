@@ -73,7 +73,7 @@ Write the JavaScript code to:
             var toDoInput = 
                 <form onSubmit={(e) => {
                     e.preventDefault();
-                    this.addTodoItem(input.value);
+                    this.addTodo(input.name);
                     input.value = '';}}>
                     <input ref={node => {
                         input = node;}} />
@@ -125,11 +125,11 @@ Write the JavaScript code to:
         * It is very useful to have `id`s, as they are usually meant to be unique (_you could have 2 todo items with the same value, but we'd really like `id` to be unique_). 
         * Think about what you'd like this `id` to be :) 
         * What should be the default value for our `completed` field? (_When you initially add a To-Do Item, you're probably not adding it because you already completed it_) 
-    * **Method:** (_You can approach this in more than one way_)
-        * **Method 1**: Modify the pre-defined `toDoList` to correspond to the new format
-        * **Method 2**: Modify your implementation of `showToDos()` to "wrap" the contents of `toDoList` as objects, and give these wrapped objects (with the correct format, obviously) as inputs to `showToDo(content)` -- Keep in mind content can be anything, it gets added to the local To-Dos anyway
+    * **Method:** (_You can approach this in more than one way, I am only outlining one_)
+        * Modify your implementation of `showToDos()` to "wrap" the contents of `toDoList` as objects, and give these wrapped objects (with the correct format, obviously) as inputs to `showToDo(content)` -- Keep in mind `content` can be anything, it gets added to the local To-Dos anyway. Also don't forget your objects need an `id`!
     * You may notice now that your `addTodoItem(value)` is no longer adequate. (_Why do you think this is? See Hint [1](#1)_)
         * Modify it to behave as you'd expect (_i.e to show a To-Do Item, as opposed to only text on screen_)
+        * Your new object needs an `id`!
 
 **Checkpoint:** We now have a more accurate view of what a To-Do Item should be. That is, not only text, but also some more context, like a unique id and a check of whether or not it has been completed, along with its actual textual content. **It also looks a bit prettier**. 
 
