@@ -102,7 +102,7 @@ class ToDo extends Component {
     return <div className="ToDo"> 
       <div className="title">{this.renderDescription()}</div>
       <div id="todo-container">
-        <button className="Button" onClick={()=>this.showToDos()}>Show Saved ToDos</button>
+        <button className="Button" onClick={()=>this.loadTodos()}>Show Saved ToDos</button>
         {this.state.toDosLocal.map((toDo,i) => toDo.value !== undefined? 
           this.showTodoItem(toDo) : 
           <div key={i}>{toDo}</div>)}
