@@ -25,7 +25,7 @@ Write the JavaScript code to:
 1. Show a set of predefined to-do tasks on screen (we will start by using a simple array implementation for the existing To-Dos)
     * Go to `./data.js` and have a look at the provided array of tasks (_notice the suggestive name_)
         * You can add aditional elements if you so desire
-    * `import` our `todoList` array from the file `./data.js` into `./ToDo.js` to be able to access its contents
+    * `import` our `todoList` array from the file `./data.js` into `./Todo.js` to be able to access its contents
 
     Example of import: 
     ```js
