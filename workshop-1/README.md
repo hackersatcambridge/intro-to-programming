@@ -82,6 +82,7 @@ Write the JavaScript code to:
             return toDoInput;
         }
         ```
+        
     * To use this function, naturally, we need to call it. You need to call it inside the `return` bit of the `render`. 
         * We'll be calling it with the following syntax: 
         ```js
