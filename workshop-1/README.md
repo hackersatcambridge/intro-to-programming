@@ -73,8 +73,8 @@ Write the JavaScript code to:
             var toDoInput = 
                 <form onSubmit={(e) => {
                     e.preventDefault();
-                    this.addTodo(input.name);
-                    input.name = '';}}>
+                    this.addTodo(input.value);
+                    input.value = '';}}>
                     <input ref={node => {
                         input = node;}} />
                 </form>
