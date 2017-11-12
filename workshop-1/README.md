@@ -165,7 +165,7 @@ Write the JavaScript code to:
         }
         ```
     * Implement `markTodoCompleted` so that the object with the input `id` will now have the `completed` field set to true
-    * _Be cheeky_: if they click again the thing, your function will get called again, if completed was `true` before, set it to `false` so that we can **toggle** completed or not completed. (_Ypu might want to optimise this into one line only, see solution in workshop-2 for inspiration_)
+    * _Be cheeky_: if they click again the thing, your function will get called again, if completed was `true` before, set it to `false` so that we can **toggle** completed or not completed. (_You might want to optimise this into one line only, see solution in workshop-2 for inspiration_)
 
 **Checkpoint:** That's it! You've managed to walk/code through a minimalistic `To-Do Application`. 
 
