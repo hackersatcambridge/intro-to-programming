@@ -1,0 +1,33 @@
+.Snek_Title{
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.Snek_Matrix{
+    background: #eee;
+    display: inline-block;
+    margin: 2em;
+}
+
+.Snek_Matrix_Row{
+    display: flex;
+    flex-direction: row;
+}
+
+.Snek_Matrix_Cell{
+    width: 1em;
+    height: 1em;
+    margin: 0.05em;
+}
+
+.cell_0{
+    background: #aaa;
+}
+
+.cell_1{
+    background: blue;
+}
+
+.cell_2{
+    background: red;
+}

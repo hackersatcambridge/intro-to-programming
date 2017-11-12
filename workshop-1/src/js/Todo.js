@@ -19,12 +19,9 @@ class Todo extends Component {
   // Adds these existing todos to a local list of todos
   loadTodos(){
     //TODO: use your todoList, imported from `./data.js
-    // in conjuction with `storeTodo(content)` 
+    // in conjuction with `addTodo(name)` 
 
     // Your code goes here
-    for (var i = 0; i < todoList.length; i++){
-      this.addTodo(todoList[i]);
-    }
   }
 
   // Takes a name (as a string) and adds it the local list of todos
@@ -33,25 +30,8 @@ class Todo extends Component {
 
     // `storeTodo` takes ANYTHING (some content) and adds it to the local list. 
     // for the beginning, it's taking name as an input, you may want to change that. 
-    var localTodos = this.getLocalTodos();
-    var nextId;
-    
-    // If we're facing an empty to do list, out nextId should be 0, i.e the first id.
-    if(localTodos.length == 0){
-      nextId = 0;
-    }
-    else{
-      var lastElement = localTodos[localTodos.length-1];
-      nextId = lastElement.id + 1;
-    }
 
-    var toDo = {
-      name: name,
-      id: nextId,
-      completed: false
-    }
-
-    this.storeTodo(toDo);
+    this.storeTodo(name);
   }
 
   // Takes an id of a todo and removes it from the local list of todos
@@ -60,14 +40,6 @@ class Todo extends Component {
     // You're working with the local To-Dos, these are held carefully
     // we're getting them with `getLocalTodos` helper function
     var toDos = this.getLocalTodos();
-
-    // Your code goes here
-    for (var i = 0; i<toDos.length; i++){
-      if (toDos[i].id == id){
-        toDos.splice(i, 1);
-        break;
-      }
-    }
     
     // After we're done performing the removing on toDos, 
     // we can go ahead and update the local To-Dos  
@@ -82,18 +54,7 @@ class Todo extends Component {
     var toDos = this.getLocalTodos();
     
     // Your code goes here
-    for (var i = 0; i<toDos.length; i++){
-      if(toDos[i].id === id){
-        toDos[i].completed = true;
-        /*
-        // If you want to toggle completed or not when you click on the object, 
-        // you might want to comment out the line above and try: 
-        toDos[i].completed = !toDos[i].completed;
-        // Observe the '!' there
-        */
-        break;
-      }
-    }
+    
     this.updateLocalTodos(toDos);
   }
 
@@ -127,19 +88,7 @@ class Todo extends Component {
   // =========================================================================
 
   // Add any additional helper functions here 
-  addInputField(){
-    var input;
-    var toDoInput = 
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            this.addTodo(input.value);
-            input.value = '';}}>
-            <input ref={node => {
-                input = node;}} />
-        </form>
-
-    return toDoInput;
-  }
+  
   // =========================================================================
 
   // This is where the magical appearing on the screen happens. 
@@ -148,7 +97,6 @@ class Todo extends Component {
   render() {    
     return <div className="Todo"> 
       <div className="Todo_title">{this.renderDescription()}</div>
-      {this.addInputField()}
       <div className="Todo_container">
         <button className="Button" onClick={()=>this.loadTodos()}>Show Saved ToDos</button>
         {this.state.toDosLocal.map((toDo,i) => toDo.name !== undefined? 
