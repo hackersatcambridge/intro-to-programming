@@ -1,0 +1,27 @@
+.Todo_container{
+    display: inline-block;
+    width: 50%;
+}
+
+.Todo_completed {
+    text-decoration: line-through;
+}
+
+.Todo_active{
+    display: inline-block;
+    overflow-wrap: break-word;
+    position: inherit;
+}
+
+.Todo_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.Todo_remove{
+    color: rgb(100, 35, 161);
+    font-weight: bold;
+}
