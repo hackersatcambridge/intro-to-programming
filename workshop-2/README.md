@@ -36,7 +36,7 @@ getInitialState(){
 ```
 * Our snake starts off in the 'up' direction, we could have chosen any other one. (_The ones I've defined here are `'up'`, `'down'`, `'left`, `'right'` but you can very well name yours whatever, as long as you're consistent - i.e whenever you use them you make sure you know what each name stands for)_
 
-* Pay close attention to the snake array. What should it be when it starts having values? Ideally, we'd like it to contain all the **positions** [`row`][`col`] in our `playMatrix` that the snake is spanned upon. This means my initial snake may look something like: `[[0,0]]`, and as it moves 1 to the right, it should be something like `[[0,1]]`, assuming it didn't eat anything on its way. We'll see more of this soon.
+* Pay close attention to the snake array. What should it be when it starts having values? Ideally, we'd like it to contain **positions**. How will these positions look? They should be just plain **objects** with `row` and `col` properties, to mimic matrix cells, which generally look like `playMatrix[row][col]`. More on this later. 
 
 * We also have a notion of whetver or not we're actually playing the game, which makes sense in the context of displaying the `Start` button or not. This behaviour is exhibited in the code below: 
 ```js
@@ -109,7 +109,7 @@ Write the JavaScript code to:
 
 -> We have a stored `isGameActive` variable which you may notice is set to `false` initially. We want to make sure this is set to true when the game is active. The code contains a helper function that you might want to use: `isPlaying(playing)` takes a `boolean` value as input and assigns it to `isGameActive`. Remember we call these functions with `this.isPlaying(...)`
 
-**Checkpoint:** This is good. We can now see an 8x8 matrix. It's grey, beautiful. You can leave it like this and be happy or more on and see the snake shaping up. 
+**Checkpoint:** This is good. We can now see an 8x8 matrix. It's grey, beautiful. You can leave it like this and be happy or move on and see the snake shaping up. 
 
 ### 2. Make our snake show up on the playing matrix 
 * Considering we have a `playingMatrix` represented as before, we want to tell our program that the snake should appear at first as a single cell, somewhere on the matrix: 
@@ -127,7 +127,7 @@ Write the JavaScript code to:
 ```
 [**Let's take a small detour**]
 
-I have tried to make this as enjoable as possible, you can skip the following and still safely complete the workshop, but I feel this provides a better understanding of what you are working with (_We need to understand how to play around with arrays of arrays a bit_):
+I have tried to make this as enjoyable as possible, you can skip the following and still safely complete the workshop, but I feel this provides a better understanding of what you are working with (_We need to understand how to play around with arrays of arrays a bit_):
 
 * What does this translate to? Simply put, our `playMatrix` is an array or arrays. If you remember our introductory sessions, we saw ways to get at some of the values stored in arrays of arrays. An example would be:
 ```js
@@ -190,7 +190,7 @@ playMatrix: [
 
 **DISCLAIMER:** I'm going to be assuming throughout this workshop that, looking at `playMatrix` -> `0` means nothing there, `1` means there is snek there, `2` means there is food there.
 
-* **Method:** Implement `initializeSnake()`. This is going to be called immediately after you've done the previous step, in the same `startGame()` function. You want to call `this.setSnake(...)` which is a helper function that takes **an array of positions** which our snake spans and updates the game matrix for us. A `position` object has a `row` and a `col` property. 
+* **Method:** Implement `initializeSnake()`. You should call this immediately after you've done the previous step, in the same `startGame()` function. You want to call `this.setSnake(...)` which is a helper function that takes **an array of positions** which our snake spans and updates the game matrix for us. A `position` object has a `row` and a `col` property. 
 ```js
 var position = {
     row: ...,
@@ -198,14 +198,13 @@ var position = {
 }
 ``` 
 
-* For this particular step, we are only going to be sending accross an array with one position, which is the `initialPosition`. 
-* At this point, you may want to also implement `restartGame()`. Esentially, when we restart the game we want to make our snake tiny again and place it at a starting position. It therefore suffices to call `initializeSnake()` from within `restartGame`. 
+* For this particular step, we are only going to be sending across an array with one position, which is the `initialPosition`.  
 
 **Checkpoint:** You should now be able to see one cell colored blue and the rest of them still grey. The blue cell is your snake. Isn't it pretty?
 
-### 3. Make our snake show up on random places on the playing matrix every time we restart the game - 5 min
+### 3. Make our snake show up on random places on the playing matrix every time we restart the game 
 
-* With what we have so far, whenever we press restartGame our snake stays at the same position, which is a set one you've probably **hard-coded** _(i.e manually introduced a value for, with no variable)_. Ideally, we would like our snake to turn up at **random** places on our game matrix. 
+* With what we have so far, whenever we press `Start` our snake stays at the same position, which is a set one you've probably **hard-coded** _(i.e manually introduced a value for, with no variable)_. Ideally, we would like our snake to turn up at **random** places on our game matrix. 
 
 * Implement a function called `getRandomNumber(lowerBound, upperBound)` which takes in a lower bound and an upper bound and returns a random value contained between those. 
 
@@ -214,18 +213,20 @@ var position = {
 
 * Now that you have this function, go ahead and **call it** to get random values every time for your initial row and column position. 
 
-**Checkpoint:** Now, whenever you press restart, our snake should be in a different spot on the matrix. A bit more realistic. 
+* At this point, you may want to also implement `restartGame()`. Esentially, when we restart the game we want to make our snake tiny again and place it at a _random_ starting position. It therefore suffices to call `initializeSnake()` from within `restartGame`.
 
-### 4. Make snakey move - 10 min
+**Checkpoint:** Now, whenever you press `Start` or `Restart`, our snake should be in a different spot on the matrix. A bit more realistic. 
+
+### 4. Make snakey move 
 
 * Here comes the fun bit. We want our snake to actually move around, eat food, etc. To move, it means it will **change position**. So we need to update the positions the snake spans, at each time step of the game. 
 
 **Some code to copy and paste** into `startGame()`, after the previous step.  
 ```js
- // This is very important, we are now saying: OK, `this` is the only
+// This is very important, we are now saying: OK, `this` is the only
 // relevant Object you care about, and we assign its contents to the 
 // variable thisSnek. We will work with thisSnek whenever we want to perform
- // actions directly on the snek Object 
+// actions directly on the snek Object 
 var thisSnek = this;    
 var timer = this.createSnakeTimer(thisSnek,500);
 ```
@@ -233,7 +234,7 @@ var timer = this.createSnakeTimer(thisSnek,500);
 
 **Checkpoint:** If you've added this timer, we should see our snake move upwards. _To infinity and beyond_ 
 
-* Our time steps are actually **defined with respect to a function**. This function is `moveSnake`, which takes the timer as its input and makes incremental changes to the snake game at every time step. 
+* Our timer is **correlated with** our `moveSnake` function, which takes this timer as its input and makes incremental changes to the snake game at every time step (_or `tick` of a clock, where the tick length is equal to the `timeInterval`, if you prefer that explanation_). 
 
 * `moveSnake(timer)` is currently only allowing the snake to move in an upwards direction. Take a moment to read through what is there already and understand what's going on. The basic idea is the following: We want to see where the head of the snake is and, knowing which direction it is currently going in, we'll be able to update the coordinates _(i.e new `(row,col)` position)_ of our snake's body. 
 
@@ -245,7 +246,7 @@ var timer = this.createSnakeTimer(thisSnek,500);
 
 **Checkpoint:** Your snake should still be moving only in an upwards direction, indefinitely, but now you are making sure you take every movement into consideration, which is what we want. 
 
-Let's move on and make the snake switch directions
+_Let's move on and make the snake switch directions._
 ### 5. Make snake move according to keyboard presses
 
 * When we play a game on our computer we'll most often be using our keyboard, mouse or a combination of the two. _Alternatively, use a console or any other funky device._ Anything of the sort has some `keyCodes`. What that means is that every key on your keyboard has a certain code attributed to it. Please play around a bit: JavaScript [keyCodes](http://keycode.info/)
@@ -264,7 +265,7 @@ Let's move on and make the snake switch directions
 
 * Our snake is a bit tiny, and hungry. Let's make some food for it. I've said above that our snake body is going to be modelled by the number `1` and the food is going to be the number `2` in our game matrix. We want to just shove a `2` at a random position on the matrix. You've made the random number generator function, hopefully, if not, feel free to use mine at this point: [getRandomInt](#1). 
 
-* We'll be implementing the `addFood` function at this point. You want to make sure you have the following: `row` and `col` indexes for your food. We will need these to make sure our food cell is not overlapping with our snake and also to actually add the food element to the matrix. 
+* We'll be implementing the `addFood` function at this point. You want to make sure you have the following: `row` and `col` indexes for your food. We will need these to make sure our food cell is not overlapping with our snake and also to actually add the food element to the matrix. We can check for overlap with: `getLocalPlayMatrixValue(row, col)` which gives us the value of `playMatrix` at (row,col) - _`0` if nothing is there, `1` if there is some snek there, `2` for food_
 
 * You can use the `addFoodToMatrix(foodPosition)` helper function, which takes, as before, a position object as an input, which has `'row'` and `'col'` keys.     
 
@@ -272,7 +273,7 @@ Let's move on and make the snake switch directions
 
 **Checkpoint:** We should now be able to see the snake moving in all directions and also some red food popping up on the matrix. However, neither did out snake grow, nor did we make any extra food if our snake "ate" the existing food. **We need more!**
 
-### 7. Make snake grow when he eats food - 10 min
+### 7. Make snake grow when he eats food
 
 * For this functionality, we need to think carefully about how `localSnake` is updated in `moveSnake`:
     ```js
@@ -291,15 +292,15 @@ Let's move on and make the snake switch directions
 
 **Checkpoint:** At this point, our snake should grow, but basically only by 1 cell, so you should see a 2-celled snakey moving around, looking for some food that is not reappearing. :( You're both happy and sad now. 
 
-### 8. Make food reappear - 5 min
+### 8. Make food reappear
 
 * We're not done with modifying `moveSnake`. If you've correctly implemented the previous steps, you can now safely use `this.addFood()` when you decide not to shift the snake. (_i.e when your snake's next head position coincides with a position where you've got some food_)
 
 **Checkpoint:** Now you should have a happy snake, which will keep getting more food as it eats the previous food and keep growing while doing so. 
 
-* We've introduced a tiny problem here! If, by accident, we spawned our snake at the same position as we spawned our while randomly pressing `Reset` then our snake would not grow and no food would be added. We can take care or this by modifying `resetGame` a bit. Make good use of the existing: `clearPlayMatrix()` function or just clear it manually, if you feel like a challenge. _(For the second option, you will need the detour for from Step 2 above)_
+* We've introduced a tiny problem here! If, by accident, we spawned our snake at the same position as we spawned our while randomly pressing `Reset` then our snake would not grow and no food would be added. We can take care or this by modifying `restartGame` a bit. Make good use of the existing: `clearPlayMatrix()` function or just clear it manually, if you feel like a challenge. _(For the second option, you will need the detour from Step 2 above)_
 
-### 9. Implement game over - 10 min
+### 9. Implement game over
 
 * The snake will keep growing but... it doesn't stop at any point. We've got the very last step here. We have to implement the game over functionality. 
 
@@ -310,12 +311,16 @@ _2 Main Issues:_
 
     * What does this mean in code terms? In our case, if the snake's head next position coincides with **any** position spanned by our snake already _(you can get a list of these with `this.getLocalSnake()`)_, then it kind of means the snake if going to bite its tail, so we might as well announce game over 
 
-* **(ii) What do we want to do when there conditions are satisfied?**
+* **(ii) What do we want to do when these conditions are satisfied?**
     
     * We should definitely stop the timer. 
+
     * Try alerting the user that they've lost? 
-    * Preferably break out of any potential loop we might be in.
+
     * We might also want to give the player the option of going back to the `Start` button -> You can do that by calling the helper function `this.resetInitialState()`
+    
+    * Preferably break out of any potential loop we might be in.
+    
 
 **Checkpoint:** You just have to make sure you've puzzled everything together nicely and you should now have a fully functional 8x8 snake game! Congratulations for sticking with it.
 
@@ -341,7 +346,7 @@ In case you particularly liked thinking about the little edge cases and the snak
 
 * http://www.gamefromscratch.com/post/2011/08/04/I-want-to-be-a-game-developer.aspx
 
-* 
+* More advanced: https://github.com/Kavex/GameDev-Resources
 ## **Hints**:
 #### 1 
 ```js
