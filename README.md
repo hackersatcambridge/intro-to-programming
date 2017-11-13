@@ -57,10 +57,13 @@ Go to the Introduction to Programming [repository](https://github.com/hackersatc
 
 ### Run the app
 
-* Go to the ```workshop-1``` folder location _(where you've unzipped/cloned it)_ 
+* Go to the `workshop-1` or `workshop-2` folder location _(where you've unzipped/cloned the intro-to-programming folder)_
+
+* You will be using either normal navigation for this (_i.e visually, by navigating through folders_) or the `command line`. If you've successfully installed [Visual Studio Code](https://code.visualstudio.com/Download) there is also the option to `Open Folder` in there, then use `View` -> `Integrated Terminal` (alternatively, get in the habbit of using keyboard shortcuts: [Ubuntu](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf), [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [Mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf))
 * `yarn` 
 
     _This installs all other required dependecies for you_
+    
 * `yarn start` 
 
     _This will start the web app development server usually at `http://localhost:3000/`_
