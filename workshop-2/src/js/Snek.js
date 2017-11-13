@@ -25,25 +25,19 @@ class Snek extends Component {
     }
     return initialState;
   }
+
+  //====================================================================
+  // ALL FUNCTIONS YOU SHOULD BE FIDDLING WITH ARE HERE
   
   startGame()
   {
     alert("Started playing!");
     
+    // ------------------------------------------
+
     // [Your code goes here]
 
-    this.isPlaying(true);
-    this.initializeSnake();        
-    this.addFood();
-    
-    // This is very important, we are now saying: OK, `this` is the only
-    // relevant Object you care about, and we assign its contents to the 
-    // variable thisSnek. We will work with thisSnek whenever we want to perform
-    // actions directly on the snek Object 
-    var thisSnek = this;    
-    var timer = this.createSnakeTimer(thisSnek,500);
-   
-    this.actOnKeyPresses(thisSnek);
+    // ------------------------------------------
   }
   
   isPlaying(playing){
@@ -53,37 +47,29 @@ class Snek extends Component {
   // Initialises snake to a chosen position on the game matrix
   initializeSnake()
   {
-    var startRow = this.getRandomInt(0,8);
-    var startColumn = this.getRandomInt(0,8);
+    // ------------------------------------------
 
-    var initialPosition = {
-      row: startRow,
-      col: startColumn
-    }
+    // [Your code goes here]
 
-    this.setSnake([initialPosition]);
+    // ------------------------------------------
   }
 
   // Restarts the snake to a random position with only 1 cell as its body
   // It does so with the help of the already implemented `initSnake()` function
-  restartGame(){
-    this.initializeSnake();
-  }
-  
-  getRandomInt(min, max){
-    // [Your code goes here]
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-  }
+  restartGame(){    
+    alert('`restartGame` is not implemented yet!');
+    // ------------------------------------------
 
-  createSnakeTimer(snakeObject,timeInterval){
-    var timer = new this.Timer(function(){snakeObject.moveSnake(timer)}, timeInterval);
-    return timer;
+    // [Your code goes here]
+
+    // ------------------------------------------
   }
 
   moveSnake(timer)
   {
+    // ------------------------------------------
+    // Ready-made functionality to get you started and provide an example
+
     // Get the locally saved array of snake positions
     var localSnake = this.getLocalSnake();
     // The head of the snake is the last element in our position array
@@ -104,7 +90,11 @@ class Snek extends Component {
         rowHeadSnake += 8;
       }
     }
+    // ------------------------------------------
+
     // [Your code goes here]
+
+    // ------------------------------------------
 
     // Construct our snake's new head position
     var headPosition = {
@@ -123,17 +113,12 @@ class Snek extends Component {
 
   addFood()
   {
-    var rowFood = this.getRandomInt(0,8);
-    var colFood = this.getRandomInt(0,8);
+    alert('`addFood` is not implemented yet!');
+    // ------------------------------------------
 
-    var localMatrix = this.getLocalPlayMatrix();
+    // [Your code goes here]
 
-    while(localMatrix[rowFood][colFood] == 1){
-      rowFood = this.getRandomInt(0,8);
-      colFood = this.getRandomInt(0,8);
-    }
-
-    this.addFoodToMatrix(rowFood,colFood);
+    // ------------------------------------------
   }
   
   actOnKeyPresses(thisSnek){
@@ -142,16 +127,23 @@ class Snek extends Component {
         //alert('Left was pressed');
         thisSnek.updateSnakeDirection('left');
       }
-      // [Your completing code goes here]
+      // ------------------------------------------
+
+      // [Your code goes here]
+
+      // ------------------------------------------
     });  
   }
+
+  //====================================================================
+  // ALL HELPER FUNCTIONS ARE DOWN HERE
 
   // Takes as input an array of positions occupied by the snake 
   // Updates the locally stored snake to the new positions
   // The order is: last value is the head of the snakes
   setSnake(newSnake)
   {
-    var localPlayMatrix = this.getLocalPlayMatrix();
+    var localPlayMatrix = this.state.playMatrix;
 
     for (var row = 0; row < 8; row++)
       for (var col = 0; col < 8; col++)
@@ -165,8 +157,15 @@ class Snek extends Component {
     this.updateSnakeBody(newSnake);
   } 
   
-  addFoodToMatrix(row, col){
-    this.state.playMatrix[row][col] = 2;
+  addFoodToMatrix(foodPosition){
+    this.state.playMatrix[foodPosition.row][foodPosition.col] = 2;
+  }
+
+  // Creates a timer which is going to periodically call moveSnake,
+  // according to a timeInterval input
+  createSnakeTimer(snakeObject,timeInterval){
+    var timer = new this.Timer(function(){snakeObject.moveSnake(timer)}, timeInterval);
+    return timer;
   }
 
   // Resets the state to what it was initially 
@@ -184,9 +183,9 @@ class Snek extends Component {
     return this.state.snake;
   }
 
-  // Returns the stored play matrix
-  getLocalPlayMatrix(){
-    return this.state.playMatrix;
+  // Returns the stored play matrix value at (row,col) position
+  getLocalPlayMatrixValue(row, col){
+    return this.state.playMatrix[row][col];
   }
   
   // Updates the snake array with the values in newSnake array

@@ -81,9 +81,9 @@ drawSnakeGame(){
     return this.state.snake;
   }
 
-  // Returns the stored play matrix
-  getLocalPlayMatrix(){
-    return this.state.playMatrix;
+  // Returns the stored play matrix value at (row,col) position
+  getLocalPlayMatrixValue(row, col){
+    return this.state.playMatrix[row][col];
   }
   
   // Updates the snake array with the values in newSnake array
@@ -266,7 +266,15 @@ Let's move on and make the snake switch directions
 
 * Our snake is a bit tiny, and hungry. Let's make some food for it. I've said above that our snake body is going to be modelled by the number `1` and the food is going to be the number `2` in our game matrix. We want to just shove a `2` at a random position on the matrix. You've made the random number generator function, hopefully, if not, feel free to use mine at this point: [getRandomInt](#1). 
 
-* We'll be implementing the `addFood` function at this point. You want to make sure you have the following: `row` and `col` indexes for your food. 
+* We'll be implementing the `addFood` function at this point. You want to make sure you have the following: `row` and `col` indexes for your food. We will need these to make sure our food cell is not overlapping with our snake and also to actually add the food element to the matrix. 
+
+* You can use the `addFoodToMatrix(foodPosition)` helper function, which takes, as before, a position object as an input, which has `'row'` and `'col'` keys.     
+
+* Go ahead and call `addFood` inside _(yes, you guessed it)_ `startGame`, exactly after `this.initializeSnake()` 
+
+**Checkpoint:** We should now be able to see the snake moving in all directions and also some red food popping up on the matrix. However, neither did out snake grow, nor did we make any extra food if our snake "ate" the existing food. **We need more!**
+
+* We've introduced a tiny problem here! If, by accident, we spawned our snake at the same position as we spawned our while randomly pressing `Reset` then our snake would not grow and no food would be added. We can take care or this by modifying `resetGame` a bit. Make good use of the existing: `clearPlayMatrix()` function or just clear it manually, if you feel like a challenge. _(For the second option, you will need the detour for from Step 2 above)_
 ### 7. Make snake grow when he eats food - 10 min
 ### 8. Make food reappear - 5 min
 ### 9. Implement game over - 10 min
