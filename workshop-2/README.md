@@ -346,6 +346,8 @@ In case you particularly liked thinking about the little edge cases and the snak
 
 * http://www.gamefromscratch.com/post/2011/08/04/I-want-to-be-a-game-developer.aspx
 
+* https://github.com/petehouston/awesome-gamedev-series
+
 * More advanced: https://github.com/Kavex/GameDev-Resources
 ## **Hints**:
 #### 1 
