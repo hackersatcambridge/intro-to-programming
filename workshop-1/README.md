@@ -15,8 +15,10 @@ To-do List Maker
 ## Task 
 Go to `./workshop-1/src/js/Todo.js` and have a look at the code. Try to figure out what it does so far and how it does it. 
 
+**UPDATE:** I have also added my solution to the workshop in: [Workshop 1 - Solution](https://github.com/hackersatcambridge/intro-to-programming/blob/solution-workshop1/workshop-1/src/js/Todo.js) but only look at it if you get _really_ stuck.
+
 **Disclaimer**:
-A big part of any programming project you will ever come accross is understanding other people's code and either modifying or building on top of it. This should always play to your advantage and save you from unneccessary labour. It is rarely the case that you will need to write an entire application from scratch.  
+A big part of any programming project you will ever come across is understanding other people's code and either modifying or building on top of it. This should always play to your advantage and save you from unneccessary labour. It is rarely the case that you will need to write an entire application from scratch.  
 
 **Let's get started!**
 

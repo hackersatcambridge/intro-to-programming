@@ -1,4 +1,4 @@
-<img src="./workshop-1/resources/readme-images/hac-logo-dark.png">
+<img src="./resources/readme-images/hac-logo-dark.png">
 
 Introduction to Programming
 ===
@@ -23,7 +23,7 @@ This is a quick-and-dirty introduction to programming. It consists of a walkthro
 <!-- /TOC -->
 
 ## Programming Basics 
-Before you get into any of the hands-on material below, I advise you to familiarise yourselves with the concepts we will be making use of in the Workshops. 
+Before you get into any of the hands-on material below, I advise you to familiarise yourselves with the concepts we will be making use of in the workshops. 
 
 If you're not familiar with what variables are, how we manipulate data with instructions and most importantly, how functions come into play, please have a read-through of the material covered in the first two sessions of this beginners series: [Introductory Sessions](./intro-sessions/description.md) 
 
@@ -57,21 +57,24 @@ Go to the Introduction to Programming [repository](https://github.com/hackersatc
 
 ### Run the app
 
-* Go to the ```workshop-1``` folder location _(where you've unzipped/cloned it)_ 
+* Go to the `workshop-1` or `workshop-2` folder location _(where you've unzipped/cloned the intro-to-programming folder)_
+
+* You will be using either normal navigation for this (_i.e visually, by navigating through folders_) or the `command line`. If you've successfully installed [Visual Studio Code](https://code.visualstudio.com/Download) there is also the option to `Open Folder` in there, then use `View` -> `Integrated Terminal` (alternatively, get in the habit of using keyboard shortcuts: [Ubuntu](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf), [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [Mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf))
 * `yarn` 
 
     _This installs all other required dependecies for you_
+    
 * `yarn start` 
 
     _This will start the web app development server usually at `http://localhost:3000/`_
 
 ### Change some code:
 
-Go to `/workshop-1/src/js/Playground.js` and change the description message. The app should re-build itself and reload the content with your changes. You are free to change whatever in that file or in any other one. Active involvement with `ToDo.js` `Snek.js` and `Transfer.js` will be going on in the three Workshops. 
+Go to `/workshop-1/src/js/Todo.js` and change the description message. The app should re-build itself and reload the content with your changes. You are free to change whatever in that file or in any other one. Active involvement with `ToDo.js` and `Snek.js` will be going on in the first and second workshop, respectively. The third workshop will see us going back to an online code compiler.  
 
 ## Workshops 
 
-There are three workshops that you may attempt with the knowledge acquired from the introductory material. The Workshops consist of changing different components in the same application in order to apply the basic principles or programming: ...
+There are three workshops that you may attempt with the knowledge acquired from the introductory material. The workshops consist of changing different components in the same application in order to apply the basic principles or programming: ...
 
 ### Workshop 1 
 In this workshop we will go ahead and apply the acquired knowledge to a real-life application. 
@@ -79,9 +82,11 @@ In this workshop we will go ahead and apply the acquired knowledge to a real-lif
 By putting together the pieces for a [To-Do Application](./workshop-1/README.md) we will dynamically see our code shaping the outcome of the program. Striving to understand how everything puzzles together is one of the beauties of programming. 
 
 ### Workshop 2
-To be continued...
+In this workshop we will get a small insight into the world of making games via programming by building the logic and functionality for a simple snake game.  
 
-### Practical 3
+By putting together the pieces for a [Snake Game](./workshop-2/README.md) we will see how we can mimic through code the classic snake game, make it move, feed it, etc. This offers a great introduction to some of the workings of how logic for games are actually made and you may just realize it's far from difficult :) 
+
+### Workshop 3
 To be continued...
 
 ## Resources 

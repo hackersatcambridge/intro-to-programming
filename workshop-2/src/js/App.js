@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/App.css'
-import Todo from './Todo.js'
+import Snek from './Snek.js'
 
 class App extends Component {
   render() {    
@@ -10,7 +10,7 @@ class App extends Component {
       </div>
       <div className="App_content">
         <div className="App_container">
-          <Todo/>
+          <Snek/>
         </div>     
       </div>
     </div>
