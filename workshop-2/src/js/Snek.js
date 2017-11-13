@@ -26,30 +26,22 @@ class Snek extends Component {
     return initialState;
   }
   
-  getRandomInt(min, max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-  }
-
   startGame()
   {
     alert("Started playing!");
     this.isPlaying(true);
 
     this.initializeSnake();
-    this.addFood();
-
+    //this.addFood();
     
     // This is very important, we are now saying: OK, `this` is the only
     // relevant Object you care about, and we assign its contents to the 
     // variable thisSnek. We will work with thisSnek whenever we want to perform
     // actions directly on the snek Object 
     var thisSnek = this;    
-    var timer = new this.Timer(function(){thisSnek.moveSnake(timer)}, 500);
+    var timer = this.createSnakeTimer(thisSnek,500);
    
-    this.actOnKeyPresses(thisSnek);
-    
+    //this.actOnKeyPresses(thisSnek);
   }
   
   isPlaying(playing){
@@ -64,11 +56,23 @@ class Snek extends Component {
 
     var initialPosition = {
       row: startRow,
-      column: startColumn
+      col: startColumn
     }
 
     this.setSnake([initialPosition]);
   }
+  
+  getRandomInt(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+  createSnakeTimer(snakeObject,timeInterval){
+    var timer = new this.Timer(function(){snakeObject.moveSnake(timer)}, timeInterval);
+    return timer;
+  }
+
 
   // Takes as input an array of positions occupied by the snake 
   // Updates the locally stored snake to the new positions
@@ -77,13 +81,13 @@ class Snek extends Component {
   {
     var localPlayMatrix = this.getLocalPlayMatrix();
 
-    for (var line = 0; line < 8; line++)
-      for (var column = 0; column < 8; column++)
-        if (localPlayMatrix[line][column] == 1)
-          localPlayMatrix[line][column] = 0;
+    for (var row = 0; row < 8; row++)
+      for (var col = 0; col < 8; col++)
+        if (localPlayMatrix[row][col] == 1)
+          localPlayMatrix[row][col] = 0;
     
     for (var i = 0; i < newSnake.length; i++){
-      localPlayMatrix[ newSnake[i].row ] [ newSnake[i].column ] = 1;
+      localPlayMatrix[ newSnake[i].row ] [ newSnake[i].col ] = 1;
     }
     
     this.updateSnakeBody(newSnake);
@@ -91,60 +95,46 @@ class Snek extends Component {
 
   moveSnake(timer)
   {
+    // Get the locally saved array of snake positions
     var localSnake = this.getLocalSnake();
+    // The head of the snake is the last element in our position array
     var headSnake = localSnake[localSnake.length-1];
     
+    // Get the row and column indexes at which the snake head lies
     var rowHeadSnake = headSnake.row;
-    var columnHeadSnake = headSnake.column;
+    var columnHeadSnake = headSnake.col;
 
+    // Get our snake's current direction
     var currentDirection = this.getCurrentDirection();
 
     if (currentDirection == 'up')
     {
-      rowHeadSnake --;
-      if (rowHeadSnake < 0)
+      rowHeadSnake--;
+      // Loop around
+      if(rowHeadSnake < 0){
         rowHeadSnake += 8;
+      }
     }
-
     if (currentDirection == 'down')
     {
-      rowHeadSnake ++;
-      if (rowHeadSnake > 7)
+      rowHeadSnake++;
+      // Loop around
+      if(rowHeadSnake >= 8){
         rowHeadSnake -= 8;
-    }
-
-    if (currentDirection == 'left')
-    {
-      columnHeadSnake--;
-      if (columnHeadSnake < 0)
-        columnHeadSnake += 8;
-    }
-
-    if (currentDirection == 'right')
-    {
-      columnHeadSnake++;
-      if (columnHeadSnake > 7)
-        columnHeadSnake -= 8;
-    }
-
-    for (var i = 0;i < localSnake.length; i++)
-      if ((rowHeadSnake == localSnake[i].row) && (columnHeadSnake == localSnake[i].column))
-      {
-        timer.stop();
-        this.resetInitialState();
-        alert("Game over!");
-        return;
       }
+    }
 
+    // Construct our snake's new head position
     var headPosition = {
       row: rowHeadSnake,
-      column: columnHeadSnake
+      col: columnHeadSnake
     }
+
+    // Place it at the end of our snake positions array
     localSnake.push(headPosition);
-    if (this.state.playMatrix[rowHeadSnake][columnHeadSnake]==2)
-      this.addFood()
-    else
-      localSnake.shift();
+    // Eliminate the tail of the snake (otherwise it would eventually fill up all positions)
+    // .shift() eliminates the first element of an array 
+    localSnake.shift();
 
     this.setSnake(localSnake);
   }
@@ -162,13 +152,13 @@ class Snek extends Component {
 
     var localMatrix = this.getLocalPlayMatrix();
 
-    for (var line=0;line<8;line++)
-      for (var column=0;column<8;column++)
-        if (localMatrix[line][column]==0)
+    for (var row=0;row<8;row++)
+      for (var col=0;col<8;col++)
+        if (localMatrix[row][col]==0)
         {
           foodNowPosition++;
           if (foodTargetPosition == foodNowPosition)
-            localMatrix[line][column]=2;
+            localMatrix[row][col]=2;
         }
   }
   

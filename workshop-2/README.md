@@ -192,11 +192,11 @@ playMatrix: [
 
 **DISCLAIMER:** I'm going to be assuming throughout this workshop that, looking at `playMatrix` -> `0` means nothing there, `1` means there is snek there, `2` means there is food there.
 
-* **Method:** Implement `initializeSnake()`. This is going to be called immediately after you've done the previous step, in the same `startGame()` function. You want to call `this.setSnake(...)` which is a helper function that takes **an array of positions** which our snake spans and updates the game matrix for us. A `position` object has a `row` and a `column` property. 
+* **Method:** Implement `initializeSnake()`. This is going to be called immediately after you've done the previous step, in the same `startGame()` function. You want to call `this.setSnake(...)` which is a helper function that takes **an array of positions** which our snake spans and updates the game matrix for us. A `position` object has a `row` and a `col` property. 
 ```js
 var position = {
     row: ...,
-    column: ...
+    col: ...
 }
 ``` 
 
@@ -221,11 +221,52 @@ var position = {
 ### 4. Make snakey move - 10 min
 
 * Here comes the fun bit. We want our snake to actually move around, eat food, etc. To move, it means it will **change position**. So we need to update the positions the snake spans, at each time step of the game. 
-### 5. Make food - 10 min
-### 6. Make snake grow when he eats food - 10 min
-### 7. Make food reappear - 5 min
-### 8. Implement game over - 10 min
+
+**Some code to copy and paste** into `startGame()`, after the previous step.  
+```js
+ // This is very important, we are now saying: OK, `this` is the only
+// relevant Object you care about, and we assign its contents to the 
+// variable thisSnek. We will work with thisSnek whenever we want to perform
+ // actions directly on the snek Object 
+var thisSnek = this;    
+var timer = this.createSnakeTimer(thisSnek,500);
+```
+**Explanation:** These steps are modelled by a timer: `createSnakeTimer(snakeObject,timeInterval)` which takes a snake object `var thisSnek = this` and a time interval _(measured in ms, so a `var timeInterval = 1000` would mean 1 second)_ and returns a timer object. The timer object is defined at the very bottom of `Snek.js` and has 3 main methods: `stop`, `start` and `reset`. I will define each when/if we need to make use of them.  
+
+**Checkpoint:** If you've added this timer, we should see our snake move upwards. _To infinity and beyond_ 
+
+* Our time steps are actually **defined with respect to a function**. This function is `moveSnake`, which takes the timer as its input and makes incremental changes to the snake game at every time step. 
+
+* `moveSnake(timer)` is currently only allowing the snake to move in an upwards direction. Take a moment to read through what is there already and understand what's going on. The basic idea is the following: We want to see where the head of the snake is and, knowing which direction it is currently going in, we'll be able to update the coordinates _(i.e new `(row,col)` position)_ of our snake's body. 
+
+* Also notice that I've already written out the conditional for the `'up'` direction. If we're going up, that means on a matrix, the row index would be decreasing and the column index would be staying the same. If we've hit a margin, we would like to still stay within the matrix, so our only choice is to loop around, like I've done, or `timer.stop()`, which would bring our snake at a stand-still.  
+
+    _**Caveat:** Our code only requires an `if` at these points, and not a while, because the `while`, so to speak, is already the timer itself. In other words, `moveSnake` is called indefinitely, until the timer is stopped or reset._
+
+* That's nice, but how about moving `'left'`, `'right'`, `'down'`? Please implement these now :) 
+
+**Checkpoint:** Your snake should still be moving only in an upwards direction, indefinitely, but now you are making sure you take every movement into consideration, which is what we want. 
+
+Let's move on and make the snake switch directions
+### 5. Make snake move according to keyboard presses
+
+* When we play a game on our computer we'll most often be using our keyboard, mouse or a combination of the two. _Alternatively, use a console or any other funky device._ Anything of the sort has some `keyCodes`. What that means is that every key on your keyboard has a certain code attributed to it. Please play around a bit: JavaScript [keyCodes](http://keycode.info/)
+### 6. Make food - 10 min
+### 7. Make snake grow when he eats food - 10 min
+### 8. Make food reappear - 5 min
+### 9. Implement game over - 10 min
 
 
 ### **Hints**:
 #### 1 
+```js
+getRandomInt(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+...
+
+    row: this.getRandomInt(0,8)
+```
