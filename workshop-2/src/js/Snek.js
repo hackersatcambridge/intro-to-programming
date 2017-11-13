@@ -77,7 +77,7 @@ class Snek extends Component {
     
     // Get the row and column indexes at which the snake head lies
     var rowHeadSnake = headSnake.row;
-    var columnHeadSnake = headSnake.col;
+    var colHeadSnake = headSnake.col;
 
     // Get our snake's current direction
     var currentDirection = this.getCurrentDirection();
@@ -99,7 +99,7 @@ class Snek extends Component {
     // Construct our snake's new head position
     var headPosition = {
       row: rowHeadSnake,
-      col: columnHeadSnake
+      col: colHeadSnake
     }
 
     // Place it at the end of our snake positions array
@@ -122,6 +122,10 @@ class Snek extends Component {
   }
   
   actOnKeyPresses(thisSnek){
+    // Makes a `listener` that is connected to any kind of kew press action 
+    // i.e if listens for a KEYDOWN. What happens at this keydown is an action(=EVENT)
+    // that you perform. Our listener gives you the corresponding event to inspect 
+    // and decide what you want to do based on any of its features 
     document.addEventListener('keydown', function(event) {
       if(event.keyCode == 37) {
         //alert('Left was pressed');
