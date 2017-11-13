@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import todoList from './data.js'
 
 class Todo extends Component {
   /*This is required in order to locally save the To-Dos we will be working with
