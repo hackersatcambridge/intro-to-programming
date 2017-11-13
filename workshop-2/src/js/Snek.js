@@ -29,10 +29,12 @@ class Snek extends Component {
   startGame()
   {
     alert("Started playing!");
-    this.isPlaying(true);
+    
+    // [Your code goes here]
 
-    this.initializeSnake();
-    //this.addFood();
+    this.isPlaying(true);
+    this.initializeSnake();        
+    this.addFood();
     
     // This is very important, we are now saying: OK, `this` is the only
     // relevant Object you care about, and we assign its contents to the 
@@ -41,7 +43,7 @@ class Snek extends Component {
     var thisSnek = this;    
     var timer = this.createSnakeTimer(thisSnek,500);
    
-    //this.actOnKeyPresses(thisSnek);
+    this.actOnKeyPresses(thisSnek);
   }
   
   isPlaying(playing){
@@ -61,8 +63,15 @@ class Snek extends Component {
 
     this.setSnake([initialPosition]);
   }
+
+  // Restarts the snake to a random position with only 1 cell as its body
+  // It does so with the help of the already implemented `initSnake()` function
+  restartGame(){
+    this.initializeSnake();
+  }
   
   getRandomInt(min, max){
+    // [Your code goes here]
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
@@ -72,26 +81,6 @@ class Snek extends Component {
     var timer = new this.Timer(function(){snakeObject.moveSnake(timer)}, timeInterval);
     return timer;
   }
-
-
-  // Takes as input an array of positions occupied by the snake 
-  // Updates the locally stored snake to the new positions
-  // The order is: last value is the head of the snakes
-  setSnake(newSnake)
-  {
-    var localPlayMatrix = this.getLocalPlayMatrix();
-
-    for (var row = 0; row < 8; row++)
-      for (var col = 0; col < 8; col++)
-        if (localPlayMatrix[row][col] == 1)
-          localPlayMatrix[row][col] = 0;
-    
-    for (var i = 0; i < newSnake.length; i++){
-      localPlayMatrix[ newSnake[i].row ] [ newSnake[i].col ] = 1;
-    }
-    
-    this.updateSnakeBody(newSnake);
-  }  
 
   moveSnake(timer)
   {
@@ -115,14 +104,7 @@ class Snek extends Component {
         rowHeadSnake += 8;
       }
     }
-    if (currentDirection == 'down')
-    {
-      rowHeadSnake++;
-      // Loop around
-      if(rowHeadSnake >= 8){
-        rowHeadSnake -= 8;
-      }
-    }
+    // [Your code goes here]
 
     // Construct our snake's new head position
     var headPosition = {
@@ -139,27 +121,19 @@ class Snek extends Component {
     this.setSnake(localSnake);
   }
 
-  // Resets the state to what it was initially 
-  resetInitialState(){    
-    this.setState(this.getInitialState());
-  }
-
   addFood()
   {
-    var foodSpaces = 64-this.state.snake.length; //number of 0s in playMatrix
-    var foodTargetPosition = this.getRandomInt(0,foodSpaces);
-    var foodNowPosition = -1;
+    var rowFood = this.getRandomInt(0,8);
+    var colFood = this.getRandomInt(0,8);
 
     var localMatrix = this.getLocalPlayMatrix();
 
-    for (var row=0;row<8;row++)
-      for (var col=0;col<8;col++)
-        if (localMatrix[row][col]==0)
-        {
-          foodNowPosition++;
-          if (foodTargetPosition == foodNowPosition)
-            localMatrix[row][col]=2;
-        }
+    while(localMatrix[rowFood][colFood] == 1){
+      rowFood = this.getRandomInt(0,8);
+      colFood = this.getRandomInt(0,8);
+    }
+
+    this.addFoodToMatrix(rowFood,colFood);
   }
   
   actOnKeyPresses(thisSnek){
@@ -168,19 +142,36 @@ class Snek extends Component {
         //alert('Left was pressed');
         thisSnek.updateSnakeDirection('left');
       }
-      if(event.keyCode == 38) {
-        //alert('Up was pressed');
-        thisSnek.updateSnakeDirection('up');
-      }
-      if(event.keyCode == 39) {
-        //alert('Right was pressed');
-        thisSnek.updateSnakeDirection('right');
-      }
-      if(event.keyCode == 40) {
-        //alert('Down was pressed');
-        thisSnek.updateSnakeDirection('down');
-      }
+      // [Your completing code goes here]
     });  
+  }
+
+  // Takes as input an array of positions occupied by the snake 
+  // Updates the locally stored snake to the new positions
+  // The order is: last value is the head of the snakes
+  setSnake(newSnake)
+  {
+    var localPlayMatrix = this.getLocalPlayMatrix();
+
+    for (var row = 0; row < 8; row++)
+      for (var col = 0; col < 8; col++)
+        if (localPlayMatrix[row][col] == 1)
+          localPlayMatrix[row][col] = 0;
+    
+    for (var i = 0; i < newSnake.length; i++){
+      localPlayMatrix[ newSnake[i].row ] [ newSnake[i].col ] = 1;
+    }
+    
+    this.updateSnakeBody(newSnake);
+  } 
+  
+  addFoodToMatrix(row, col){
+    this.state.playMatrix[row][col] = 2;
+  }
+
+  // Resets the state to what it was initially 
+  resetInitialState(){    
+    this.setState(this.getInitialState());
   }
 
   // Returns the current direction of the snake 
@@ -206,12 +197,6 @@ class Snek extends Component {
   // Updates the current direction of the snake 
   updateSnakeDirection(newDirection){
     this.setState({currentDirection: newDirection});
-  }
-
-  // Restarts the snake to a random position with only 1 cell as its body
-  // It does so with the help of the already implemented `initSnake()` function
-  restartGame(){
-    this.initializeSnake();
   }
   
   // Draws out the play matrix on the screen with the help of some web-magic 

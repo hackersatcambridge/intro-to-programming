@@ -251,7 +251,22 @@ Let's move on and make the snake switch directions
 ### 5. Make snake move according to keyboard presses
 
 * When we play a game on our computer we'll most often be using our keyboard, mouse or a combination of the two. _Alternatively, use a console or any other funky device._ Anything of the sort has some `keyCodes`. What that means is that every key on your keyboard has a certain code attributed to it. Please play around a bit: JavaScript [keyCodes](http://keycode.info/)
-### 6. Make food - 10 min
+
+* We're going to use these key codes to recognize what our user is pressing and move accordingly. For this, you'll want to complete the `actOnKeyPresses(thisSnek)` function, which takes the current snake object and calls the corresponding methods on it. In this particular case, you may find the helper function `thisSnek.updateSnakeDirection(...)` which takes a direction as input _( one of: `'up'`,`'left'`, `'right'`, `'down'`)_ and updates the current snake's direction
+
+* **Warning:** Make sure you're either looping around or stopping the timer. Otherwise, modifying the row or column indefinitely will make it difficult to index into the game matrix (i.e in JavaScript, will just say `undefined`)
+
+* Once you're done implementing this function (or even a bit of it) try it out by calling it at the bottom of our `startGame()` function. Yes, that is our **MAIN** function ;) 
+
+* _Optional_: If you're feeling funky, you can account for W,A,S,D controls as well
+
+**Checkpoint:** This is great! If you have correctly implemented `moveSnake` conditionals and catered for any key presses, our snake should now be moving in different directions according to key presses. 
+
+### 6. Make food for our snake 
+
+* Our snake is a bit tiny, and hungry. Let's make some food for it. I've said above that our snake body is going to be modelled by the number `1` and the food is going to be the number `2` in our game matrix. We want to just shove a `2` at a random position on the matrix. You've made the random number generator function, hopefully, if not, feel free to use mine at this point: [getRandomInt](#1). 
+
+* We'll be implementing the `addFood` function at this point. You want to make sure you have the following: `row` and `col` indexes for your food. 
 ### 7. Make snake grow when he eats food - 10 min
 ### 8. Make food reappear - 5 min
 ### 9. Implement game over - 10 min
