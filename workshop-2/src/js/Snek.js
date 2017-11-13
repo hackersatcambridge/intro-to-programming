@@ -172,13 +172,26 @@ class Snek extends Component {
   resetInitialState(){    
     this.setState(this.getInitialState());
   }
+  
+  clearPlayMatrix()
+  {
+    var localPlayMatrix = this.state.playMatrix;
+    for (var row = 0; row < 8; row++)
+    {
+      for (var col = 0; col < 8; col++)
+      {
+        localPlayMatrix[row][col] = 0;
+      }
+    }
+  }
 
   // Returns the current direction of the snake 
   getCurrentDirection(){
     return this.state.currentDirection;
   }
 
-  // Returns the stored snake
+  // Returns the stored snake, an array of `position` objects
+  // position = {row:..,col:...}
   getLocalSnake(){
     return this.state.snake;
   }

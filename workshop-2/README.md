@@ -1,8 +1,6 @@
 Snake Game
 ===
-## What you will be doing 
-
-## Learning aims 
+## **Learning aims**
 * Make you confortable with following simple installation instructions 
 * Apply basic programming concepts: variables, `if` statements, `for` loops
 * Understand and interact with helper functions, ready-made code
@@ -10,7 +8,7 @@ Snake Game
 * Working with **matrices** 
 * Your first view of the world of games :) 
 
-## An overview of what is **already in the code**
+## ***An overview of what is already in the code**
 _If you're confortable with figuring out what the helper code does on your own, you can skip this bit._
 
 * We have some notion of how we are going to start off this game. In this simple implementation, we'll be modelling the snake game by a 8x8 matrix. **What is a matrix?** Simply put, just an array of arrays, all of the same size. That means, an array `playMatrix` containing 8 arrays, each with 8 elements of their own. This gives us 64 little cells where our snake can run freely (_obviously without biting its tail_)  
@@ -97,7 +95,7 @@ drawSnakeGame(){
   }
 ```
 
-## Tasks 
+## **Tasks and Instructions**
 
 Write the JavaScript code to: 
 
@@ -274,13 +272,77 @@ Let's move on and make the snake switch directions
 
 **Checkpoint:** We should now be able to see the snake moving in all directions and also some red food popping up on the matrix. However, neither did out snake grow, nor did we make any extra food if our snake "ate" the existing food. **We need more!**
 
-* We've introduced a tiny problem here! If, by accident, we spawned our snake at the same position as we spawned our while randomly pressing `Reset` then our snake would not grow and no food would be added. We can take care or this by modifying `resetGame` a bit. Make good use of the existing: `clearPlayMatrix()` function or just clear it manually, if you feel like a challenge. _(For the second option, you will need the detour for from Step 2 above)_
 ### 7. Make snake grow when he eats food - 10 min
+
+* For this functionality, we need to think carefully about how `localSnake` is updated in `moveSnake`:
+    ```js
+    // Place it at the end of our snake positions array
+    localSnake.push(headPosition);
+    // Eliminate the tail of the snake (otherwise it would eventually fill up all positions)
+    // .shift() eliminates the first element of an array 
+    localSnake.shift();
+
+    this.setSnake(localSnake);
+    ```
+
+* We can see that we `.shift()` our array, as I previously explained. What this is doing is it's basically assuming we've not hit any food and just carrying on casually with 1 block only _(as we're always pushing 1 value in at the end, taking 1 value out from the beginning)_. 
+
+* Therefore, if we want our snake to grow, we just have to specify that if the position at which the snake head is going to be at coincides with a position where we have some food (_how do you check if you're got some food at a position?_) then we **don't want to `.shift()`**. For getting the value of our playMatrix at a position you can make use again of `getLocalPlayMatrixValue(row, col)`. The 3 possible values are: `0`, `1`, `2`.
+
+**Checkpoint:** At this point, our snake should grow, but basically only by 1 cell, so you should see a 2-celled snakey moving around, looking for some food that is not reappearing. :( You're both happy and sad now. 
+
 ### 8. Make food reappear - 5 min
+
+* We're not done with modifying `moveSnake`. If you've correctly implemented the previous steps, you can now safely use `this.addFood()` when you decide not to shift the snake. (_i.e when your snake's next head position coincides with a position where you've got some food_)
+
+**Checkpoint:** Now you should have a happy snake, which will keep getting more food as it eats the previous food and keep growing while doing so. 
+
+* We've introduced a tiny problem here! If, by accident, we spawned our snake at the same position as we spawned our while randomly pressing `Reset` then our snake would not grow and no food would be added. We can take care or this by modifying `resetGame` a bit. Make good use of the existing: `clearPlayMatrix()` function or just clear it manually, if you feel like a challenge. _(For the second option, you will need the detour for from Step 2 above)_
+
 ### 9. Implement game over - 10 min
 
+* The snake will keep growing but... it doesn't stop at any point. We've got the very last step here. We have to implement the game over functionality. 
 
-### **Hints**:
+_2 Main Issues:_
+* **(i) When do we consider the game to be over?** 
+    
+    * There is no set way of doing this. Some people might also include hitting the walls or some extra objects as a game stopper. Let's implement the most straightforward one, which everyone agrees on: **the snake bites its tail**
+
+    * What does this mean in code terms? In our case, if the snake's head next position coincides with **any** position spanned by our snake already _(you can get a list of these with `this.getLocalSnake()`)_, then it kind of means the snake if going to bite its tail, so we might as well announce game over 
+
+* **(ii) What do we want to do when there conditions are satisfied?**
+    
+    * We should definitely stop the timer. 
+    * Try alerting the user that they've lost? 
+    * Preferably break out of any potential loop we might be in.
+    * We might also want to give the player the option of going back to the `Start` button -> You can do that by calling the helper function `this.resetInitialState()`
+
+**Checkpoint:** You just have to make sure you've puzzled everything together nicely and you should now have a fully functional 8x8 snake game! Congratulations for sticking with it.
+
+## **What's next?**
+### _Snake Game functionality extension possibilities:_
+
+* Feel free to extend the game from an 8x8 matrix to a bigger matrix, or even a user-defined lengthed one. 
+
+* Keep a score count and display it at the end, along with the `Game Over` alert.
+
+* Add obstacles (_can model them with 3's on the matrix, etc_) 
+
+### _Other games with `JavaScript` and `React`_
+In case you're found this nice.
+* https://react.rocks/tag/Game
+
+* https://developer.mozilla.org/en-US/docs/Games/Tutorials
+
+* https://medium.com/@VadimBrodsky/javascript-game-development-where-to-start-5bdc097cbd6e
+
+### _Game development in general_ 
+In case you particularly liked thinking about the little edge cases and the snake movement, game development may be for you :) Below are some extra resources: 
+
+* http://www.gamefromscratch.com/post/2011/08/04/I-want-to-be-a-game-developer.aspx
+
+* 
+## **Hints**:
 #### 1 
 ```js
 getRandomInt(min, max){
