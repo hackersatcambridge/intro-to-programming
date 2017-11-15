@@ -23,6 +23,8 @@ Thanks for coming to this session! Please help us to improve this series by [fil
 
 [Functions Playground](https://repl.it/Lt54/13)
 
+[Recording of the Session](https://www.youtube.com/watch?v=spIVWmv1jnw)
+
 
 ## Extra, fun links to get you enthusiastic
 [Khan Academy - Functions](https://www.khanacademy.org/computing/computer-programming/pjs-documentation)
@@ -51,6 +53,8 @@ My favorite collection of helpful links for any programmer, of any level!
 [Looping Playground](https://repl.it/NDc7/26)
 
 [Objects Playground](https://repl.it/NDa4/28)
+
+[Recording of the Session](https://www.youtube.com/watch?v=R754xVdLcNI)
 
 
 ## Relevant libraries 
