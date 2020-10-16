@@ -3,7 +3,8 @@ Introduction to Programming for Beginners
 ## What is it?
 Hackers at Cambridge are happy to present Introduction to Programming for Beginners! 
 
-If you've ever wondered what programming is about, heard your friends are coding and want to get into the game or are simply just looking for a chance to learn something new, this is your chance. 
+If you've ever wondered what programming is about, heard your friends are coding and want to get into the game or are simply just looking for a chance to learn something new, this is your chance!
+
 Come join us to learn, ask questions and leave empowered. 
 
 ## Layout
@@ -17,16 +18,31 @@ Thanks for coming to this session! Please help us to improve this series by [fil
 
 ---
 
-# Session 1
+# Workshop
 ## Relevant Links
-[Slide-deck](https://docs.google.com/presentation/d/10VeyoN7EzxfezPjInAda_uEBZ1yp1UkY7z8ST78Do8Q/edit?usp=sharing)
+[Slide-deck](https://docs.google.com/presentation/d/1L4a3H8W8jFd0rpL0nNf-5dym2i5hRSXBS054ekSSJDY/edit?usp=sharing)
 
-[Functions Playground](https://repl.it/Lt54/13)
+[Functions Playground](https://repl.it/@DaveDuck321/Fuctions)
 
-[Recording of the Session](https://www.youtube.com/watch?v=spIVWmv1jnw)
+[Coditionals Playground](https://repl.it/@DaveDuck321/Control-Structures)
+
+[Looping Playground](https://repl.it/@DaveDuck321/Looping)
+
+[Objects Playground](https://repl.it/@DaveDuck321/Objects)
+
+
+
+[Session Recording (Part 1)](https://www.youtube.com/watch?v=spIVWmv1jnw)
+
+[Session Recording (Part 2)](https://www.youtube.com/watch?v=R754xVdLcNI)
 
 
 ## Extra, fun links to get you enthusiastic
+### General coding
+[Developer Community’s 9 Tips for Coding Beginners](https://www.codementor.io/learn-programming/tips-on-becoming-a-software-engineer)
+
+[A list of projects you can try your hand at](https://github.com/karan/Projects/)
+
 [Khan Academy - Functions](https://www.khanacademy.org/computing/computer-programming/pjs-documentation)
 
 My favorite collection of helpful links for any programmer, of any level!
@@ -42,21 +58,6 @@ My favorite collection of helpful links for any programmer, of any level!
 
 [How to become a programmer, or the art of Googling well](https://okepi.wordpress.com/2014/08/21/how-to-become-a-programmer-or-the-art-of-googling-well/)
 
----
-
-# Session 2 
-## Relevant Links
-[Slide-deck](https://docs.google.com/presentation/d/18V0uwAo75aF__q3bXJjqIyoaTEbWHMZGU5hipXScP9k/edit?usp=sharing)
-
-[Coditionals Playground](https://repl.it/Mzws/21)
-
-[Looping Playground](https://repl.it/NDc7/26)
-
-[Objects Playground](https://repl.it/NDa4/28)
-
-[Recording of the Session](https://www.youtube.com/watch?v=R754xVdLcNI)
-
-
 ## Relevant libraries 
 
 [Logical Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
@@ -67,11 +68,6 @@ My favorite collection of helpful links for any programmer, of any level!
 
 [Math](https://developer.mozilla.org/ro/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
-## Extra, fun links to get you enthusiastic
-### General coding
-[Developer Community’s 9 Tips for Coding Beginners](https://www.codementor.io/learn-programming/tips-on-becoming-a-software-engineer)
-
-[A list of projects you can try your hand at](https://github.com/karan/Projects/)
 
 ### JavaScript Related
 [More about OBJECTS](https://javascript.info/object)
